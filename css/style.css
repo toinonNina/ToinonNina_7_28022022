@@ -114,7 +114,7 @@ h1 {
     background-color: #C7BEBE;
 }
 
-.recipe-détails {
+.recipe-details {
     height: 50%;
     background-color: #E7E7E7;
 }
@@ -145,4 +145,5 @@ h1 {
 
 .recipes-description {
     width: 45%;
+    margin: 0;
 }

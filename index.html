@@ -75,32 +75,29 @@
 
             </div>
         </section>
+        <!-- <span id="no-result" class="hidden">Aucune recette ne correspond à votre critère... vous pouvez chercher "tarte aux pommes", "poisson", etc.</span> -->
         <section id="recipes-container">
-            <article class="recipes" id="">
-                <div class="recipe-img"></div>
-                <div class="recipe-détails">
-                    <div class="recipe-head-text">
-                        <h2>Limonade de Coco</h2>
-                        <span class="timer">
-                            <i class="far fa-clock"></i> 10 min
-                        </span>
+            <template id="template_recipe">
+                <article class="recipe">
+                    <div class="recipe-thumbnail"></div>
+                    <div class="recipe-details">
+                        <h2 class="recipe-title"></h2>
+                        <span class="recipe-time"></span>
+                        <ul class="recipe-ingredients"></ul>
+                        <p class="recipe-description"></p>
                     </div>
-                    <div class="container-details">
-                        <ul class="recipes-ingrédients">
-                            <li>Lait de coco: 400 ml</li>
-                            <li>Jus de citron: 2</li>
-                            <li>Crème de coco: 2 cuillères à soupe</li>
-                            <li>Sucre: 30 grammes</li>
-                            <li>Glaçons</li>
-                        </ul>
-                        <p class="recipes-description">Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco , le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée
-                        </p>
-                    </div>
-                </div>
-            </article>
+                </article>
+            </template>
+
+
+
+
+
+
         </section>
     </main>
-
+    <script src="script/factory/recipe.js" defer></script>
+    <script src="script/index.js" type="module" defer></script>
 </body>
 
 </html>
