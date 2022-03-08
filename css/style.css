@@ -61,6 +61,10 @@ h1 {
     flex-wrap: wrap;
 }
 
+.search-btn {
+    margin-left: 15px;
+}
+
 .advanced-search-btn {
     margin-right: 20px;
     margin-top: 50px;
@@ -137,7 +141,7 @@ h1 {
     margin: 0 10px
 }
 
-.recipes-ingrédients {
+.recipes-ingredients {
     width: 45%;
     list-style-type: none;
     padding: 0
@@ -146,4 +150,39 @@ h1 {
 .recipes-description {
     width: 45%;
     margin: 0;
+}
+
+.ul-container {
+    transform: scale(0);
+    position: absolute;
+    z-index: 1;
+    top: 290px;
+    background-color: inherit;
+    border-radius: 0 0 5px 5px;
+    width: 667px;
+    max-height: 328px;
+    padding: 18px 25px 15px 25px;
+    overflow-y: auto;
+    transition: transform 300ms;
+    transform-origin: top left;
+}
+
+.advanced-search-btn.active .ul-container {
+    transform: scale(1);
+}
+
+.advanced-search-btn.active {
+    width: 667px;
+}
+
+.input-tag {
+    width: 100%;
+}
+
+.li-list {
+    list-style-type: none;
+    column-count: 3;
+    margin: 0;
+    padding: 0;
+    color: white
 }

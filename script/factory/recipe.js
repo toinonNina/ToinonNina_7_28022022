@@ -4,7 +4,6 @@ function recipesFactory(data) {
 
     function getRecipesDOM() {
         const article = document.createElement('article');
-        const recipeIngredients = document.querySelector('.recipes-ingrédients');
         article.setAttribute('class', 'recipes');
         article.setAttribute('id', `${id}`);
         article.setAttribute('data-appliance', `${appliance}`);
@@ -21,7 +20,7 @@ function recipesFactory(data) {
             } min</span>
                     </div>
                     <div class="container-details">
-                        <ul class="recipes-ingredients">
+                        <ul class="recipes-ingredients ">
                         ${ingredients.map((ingredient) => `<li>${ingredient.ingredient}: ${"quantity" in ingredient ? ingredient.quantity : ""}
                         ${"unit" in ingredient ? ingredient.unit : ""}`)}</li>
                         </ul>
