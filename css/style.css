@@ -186,3 +186,22 @@ h1 {
     padding: 0;
     color: white
 }
+
+#search-tag {
+    display: flex;
+    margin-top: 20px;
+}
+
+.inlinetag {
+    display: inline-flex;
+    background-color: #3282F7;
+    margin-left: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: auto;
+}
+
+.items-tag {
+    margin-right: 5px;
+}

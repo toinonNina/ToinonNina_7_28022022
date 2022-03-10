@@ -9,6 +9,8 @@ const cssmodif = document.querySelectorAll(".advanced-search-btn");
 const appareilsInput = document.getElementById('appareils');
 const ustensilsInput = document.getElementById('ustensiles');
 const ingredientsInput = document.getElementById('ingredients');
+const mainSearchinput = document.getElementById('main-search');
+
 
 
 async function displayRecipes(recipes) {
@@ -28,12 +30,11 @@ ingredientsChevron.addEventListener('click', (e) => {
     if (cssmodif[0].classList.contains('active')) {
         closeList(cssmodif[0]);
         appareilsInput.placeholder = `Ingrédients`;
-        console.log("ok");
     } else {
         openList(cssmodif[0]);
-        appareilsInput.placeholder = `Rechercher un ingrédient`;
+        appareilsInput.placeholder = `Appareil`;
         closeList(cssmodif[1]);
-        ingredientsInput.placeholder = `Appareil`;
+        ingredientsInput.placeholder = `Rechercher un ingrédient`;
         closeList(cssmodif[2]);
         ustensilsInput.placeholder = `Ustensiles`;
     }
@@ -43,7 +44,6 @@ appareilsChevron.addEventListener('click', (e) => {
     if (cssmodif[1].classList.contains('active')) {
         closeList(cssmodif[1]);
         appareilsInput.placeholder = `Appareils`;
-        console.log("ok");
     } else {
         openList(cssmodif[1]);
         appareilsInput.placeholder = `Rechercher un appareil`;
@@ -59,7 +59,6 @@ ustensilsChevron.addEventListener('click', () => {
     if (cssmodif[2].classList.contains('active')) {
         closeList(cssmodif[2]);
         ustensilsInput.placeholder = `Ustensiles`;
-        console.log("ok");
     } else {
         openList(cssmodif[2]);
         ustensilsInput.placeholder = `Rechercher un ustensile`;
@@ -87,7 +86,7 @@ function displayIngredients() {
     }
     let repetitionIngredients = ingredientsItem.filter((item, index) => ingredientsItem.indexOf(item) === index).sort();
     for (let l = 0; l < repetitionIngredients.length; l++) {
-        ingredientsUl.innerHTML += `<li class="item" data-value='${repetitionIngredients[l]}'>${repetitionIngredients[l]}</li>`;
+        ingredientsUl.innerHTML += `<li class="item ingredients-result" data-value='${repetitionIngredients[l]}'>${repetitionIngredients[l]}</li>`;
     }
 }
 
@@ -122,6 +121,73 @@ function closeList(cssmodif) {
     cssmodif.classList.remove('active');
 }
 
+
+function searchMainBar() {
+    const mainSearch = document.getElementById('main-search');
+    console.log(mainSearch);
+    mainSearch.addEventListener('keyup', (e) => {
+        const searchString = uniformString(e.target.value.toLowerCase());
+        if (searchString.length > 2) {
+            const filteredGlobal = recipes.filter((recipe) => {
+                return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.appliance).toLowerCase().includes(searchString) ||
+                    recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
+            });
+
+            console.log(filteredGlobal);
+        } else console.log("error");
+    });
+}
+
+// ingredientsInput.addEventListener('input', () => {
+//     if (ingredientsInput.value.length > 2) {
+//         recipes.filter((recipe) => {
+
+//         });
+//     }
+// });
+
+function addFilteredIngredient() {
+    const ingredientsResult = document.querySelectorAll(".ingredients-result"); // Ingrédients de la liste
+    for (let i = 0; i < ingredientsResult.length; i++) {
+        ingredientsResult[i].addEventListener("click", addIngredient);
+    }
+}
+
+function addIngredient(ingredientEvent) {
+    console.log("ok");
+    let itemsSelected = ingredientEvent.target.innerText;
+    const searchTag = document.querySelector('#search-tag');
+    let tagContainer = document.createElement("div");
+    tagContainer.classList.add("inlinetag");
+
+    tagContainer.innerHTML = `<div class='items-tag'>${itemsSelected
+        }</div> <i class="far fa-times-circle close-button"></i>`;
+    searchTag.appendChild(tagContainer);
+}
+
+
+// function uniformString(string) {
+//     string = string
+//         .normalize("NFD")
+//         .replace(/[\u0300-\u036f]/g, "");
+
+//     string = string.toLowerCase();
+
+//     string = string
+//         .replace(/œ/g, "oe")
+//         .replace(/æ/g, "ae")
+//         .replace(/[']/g, " ");
+
+//     return string;
+// }
+
+
+
+
+
+
+
+
 async function init() {
 
 
@@ -129,5 +195,7 @@ async function init() {
     displayAppareils();
     displayUstensils();
     displayIngredients();
+    // searchMainBar();
+    addFilteredIngredient();
 }
 init();
