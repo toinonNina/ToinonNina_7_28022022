@@ -39,5 +39,5 @@ function recipesFactory(data) {
         return (article);
 
     }
-    return { ingredients, getRecipesDOM };
+    return { data, getRecipesDOM };
 }
