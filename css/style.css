@@ -18,6 +18,10 @@ button {
     border: none;
 }
 
+.search-btn-icon {
+    background-color: #E7E7E7;
+}
+
 header {
     width: 268px;
     display: flex;
@@ -205,13 +209,35 @@ h1 {
     margin: 10px
 }
 
-.ingredients-inlinetag {
+.ingredients-inlinetag,
+.appareils-inlinetag,
+.ustensils-inlinetag {
     display: none;
 }
 
 .ingredients-inlinetag.active {
     display: inline-flex;
     background-color: #3282F7;
+    margin-left: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: auto;
+}
+
+.appareils-inlinetag.active {
+    display: inline-flex;
+    background-color: #68D9A4;
+    margin-left: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: auto;
+}
+
+.ustensils-inlinetag.active {
+    display: inline-flex;
+    background-color: #ED6454;
     margin-left: 10px;
     align-items: center;
     padding: 10px;
