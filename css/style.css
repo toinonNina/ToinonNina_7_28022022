@@ -83,6 +83,12 @@ h1 {
     height: 69px;
 }
 
+#ingredients-chevron.active,
+#appareils-chevron.active,
+#ustensiles-chevron.active {
+    transform: rotate(180deg);
+}
+
 .search-btn-align input::placeholder {
     color: white;
     font-size: 1.4em;

@@ -43,9 +43,11 @@ ingredientsChevron.addEventListener('click', (e) => {
     if (cssmodif[0].classList.contains('active')) {
         closeList(cssmodif[0]);
         ingredientsInput.placeholder = `Ingrédients`;
+        ingredientsChevron.classList.remove("active");
     } else {
         openList(cssmodif[0]);
         ingredientsInput.placeholder = `Rechercher un ingrédient`;
+        ingredientsChevron.classList.add("active");
         closeList(cssmodif[1]);
         appareilsInput.placeholder = `Appareil`;
         closeList(cssmodif[2]);
@@ -57,9 +59,11 @@ appareilsChevron.addEventListener('click', (e) => {
     if (cssmodif[1].classList.contains('active')) {
         closeList(cssmodif[1]);
         appareilsInput.placeholder = `Appareils`;
+        appareilsChevron.classList.remove("active");
     } else {
         openList(cssmodif[1]);
         appareilsInput.placeholder = `Rechercher un appareil`;
+        appareilsChevron.classList.add("active");
         closeList(cssmodif[0]);
         ingredientsInput.placeholder = `Ingrédients`;
         closeList(cssmodif[2]);
@@ -72,9 +76,11 @@ ustensilsChevron.addEventListener('click', () => {
     if (cssmodif[2].classList.contains('active')) {
         closeList(cssmodif[2]);
         ustensilsInput.placeholder = `Ustensiles`;
+        ustensilsChevron.classList.remove("active");
     } else {
         openList(cssmodif[2]);
         ustensilsInput.placeholder = `Rechercher un ustensile`;
+        ustensilsChevron.classList.add("active");
         closeList(cssmodif[0]);
         ingredientsInput.placeholder = `Ingrédients`;
         closeList(cssmodif[1]);
