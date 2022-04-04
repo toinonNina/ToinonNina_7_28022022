@@ -435,21 +435,6 @@ function searchMainBar() {
                     return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
                         recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
                 });
-                //algo alternatif
-                // for (let i = 0; i < recipes.length; i++) {
-                //     const { name, ingredients, description } = recipes[i];
-                //     const namerecipe = uniformString(name).toLowerCase().includes(searchString);
-                //     const descriptionrecipe = uniformString(description).toLowerCase().includes(searchString);
-                //     let ingredientrecipe = false;
-                //     for (let y = 0; y < ingredients.length; y++) {
-                //         if (uniformString(ingredients[y].ingredient).toLowerCase().includes(searchString)) {
-                //             ingredientrecipe = true;
-                //         }
-                //     }
-                //     if (namerecipe || descriptionrecipe || ingredientrecipe) {
-                //         filteredGlobal.push(recipes[i]);
-                //     }
-                // }
 
                 console.timeEnd();
 
