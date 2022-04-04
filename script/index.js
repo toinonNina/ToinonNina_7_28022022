@@ -436,20 +436,21 @@ function searchMainBar() {
                         recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
                 });
                 //algo alternatif
-                // for (let recipe of recipes) {
-                //     let namerecipe = recipe.name.split(" ");
-                //     let descriptionrecipe = recipe.description.split(" ");
-                //     let ingredientrecipe = recipe.ingredients.map((el) => {
-                //         return uniformString(el.ingredient);
-                //     });
-                //     if (descriptionrecipe.some((el) => uniformString(el).toLowerCase().match(searchString))) {
-                //         filteredGlobal.push(recipe);
-                //     } else if (namerecipe.some((el) => uniformString(el).toLowerCase().match(searchString))) {
-                //         filteredGlobal.push(recipe);
-                //     } else if (ingredientrecipe.some((el) => uniformString(el).toLowerCase().match(searchString))) {
-                //         filteredGlobal.push(recipe);
+                // for (let i = 0; i < recipes.length; i++) {
+                //     const { name, ingredients, description } = recipes[i];
+                //     const namerecipe = uniformString(name).toLowerCase().includes(searchString);
+                //     const descriptionrecipe = uniformString(description).toLowerCase().includes(searchString);
+                //     let ingredientrecipe = false;
+                //     for (let y = 0; y < ingredients.length; y++) {
+                //         if (uniformString(ingredients[y].ingredient).toLowerCase().includes(searchString)) {
+                //             ingredientrecipe = true;
+                //         }
+                //     }
+                //     if (namerecipe || descriptionrecipe || ingredientrecipe) {
+                //         filteredGlobal.push(recipes[i]);
                 //     }
                 // }
+
                 console.timeEnd();
 
                 console.log(filteredGlobal);
