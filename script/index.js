@@ -437,6 +437,7 @@ function searchMainBar() {
             }
             if (tagArrayselected.length === 0) {
                 console.time();
+
                 filteredGlobal = recipes.filter((recipe) => {
                     return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
                         recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
@@ -450,21 +451,11 @@ function searchMainBar() {
             if (filteredGlobal.length === 0) {
                 recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
             }
-
         } else {
-            if (tagArrayselected.length != 0) {
 
-                filteredGlobal = filterrecipes.filter((recipe) => {
-                    return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
-                        recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
-                });
-                updatemedia(filteredGlobal);
-                if (filteredGlobal.length === 0) {
-                    recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
-                }
-
-            } else {
-                recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
+            recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
+            if (searchString.length === 0 && tagArrayselected.length === 0) {
+                updatemedia(recipes);
             }
 
         }
@@ -497,7 +488,7 @@ function uniformString(string) {
 
 async function init() {
 
-    searchMainBar();
+
     displayRecipes(recipes);
     displayAppareils(recipes);
     displayUstensils(recipes);
@@ -508,5 +499,6 @@ async function init() {
     addTagIngredient();
     addTagappareil();
     addTagustensil();
+    searchMainBar();
 }
 init();
