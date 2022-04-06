@@ -364,7 +364,6 @@ function RemoveClassActive(button) {
 
 }
 
-
 //search function in the list of filters
 
 
@@ -423,7 +422,6 @@ function searchUstensils() {
 
 //main search function, with or without tag;
 function searchMainBar() {
-
     mainSearchinput.addEventListener('keyup', (e) => {
         let filteredGlobal = [];
         const searchString = uniformString(e.target.value.toLowerCase());
@@ -437,10 +435,27 @@ function searchMainBar() {
             }
             if (tagArrayselected.length === 0) {
                 console.time();
-                filteredGlobal = recipes.filter((recipe) => {
-                    return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
-                        recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
-                });
+
+                //algo alternatif
+                for (let i = 0; i < recipes.length; i++) {
+                    const { name, ingredients, description } = recipes[i];
+                    const namerecipe = uniformString(name).toLowerCase().includes(searchString);
+                    const descriptionrecipe = uniformString(description).toLowerCase().includes(searchString);
+                    let ingredientrecipe = false;
+                    for (let y = 0; y < ingredients.length; y++) {
+                        if (uniformString(ingredients[y].ingredient).toLowerCase().includes(searchString)) {
+                            ingredientrecipe = true;
+                        }
+                    }
+                    if (namerecipe || descriptionrecipe || ingredientrecipe) {
+                        filteredGlobal.push(recipes[i]);
+                    }
+                }
+
+                // filteredGlobal = recipes.filter((recipe) => {
+                //     return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
+                //         recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
+                // });
 
                 console.timeEnd();
 
@@ -450,28 +465,17 @@ function searchMainBar() {
             if (filteredGlobal.length === 0) {
                 recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
             }
-
         } else {
-            if (tagArrayselected.length != 0) {
 
-                filteredGlobal = filterrecipes.filter((recipe) => {
-                    return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
-                        recipe.ingredients.some((el) => uniformString(el.ingredient).includes(searchString)));
-                });
-                updatemedia(filteredGlobal);
-                if (filteredGlobal.length === 0) {
-                    recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
-                }
-
-            } else {
-                recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
+            recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
+            if (searchString.length === 0 && tagArrayselected.length === 0) {
+                updatemedia(recipes);
             }
 
         }
 
     });
 }
-
 
 //font normalization function
 function uniformString(string) {
@@ -489,15 +493,7 @@ function uniformString(string) {
 }
 
 
-
-
-
-
-
-
 async function init() {
-
-    searchMainBar();
     displayRecipes(recipes);
     displayAppareils(recipes);
     displayUstensils(recipes);
@@ -508,5 +504,6 @@ async function init() {
     addTagIngredient();
     addTagappareil();
     addTagustensil();
+    searchMainBar();
 }
 init();
