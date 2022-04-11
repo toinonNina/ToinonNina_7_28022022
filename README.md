@@ -12,3 +12,4 @@ Vous êtes freelance et vous venez d’être missionné par l’entreprise “Le
 * Les filtres doivent se mettre à jour quand l'utilisateur effectue une recherche
 * Quand un filtre est sélectionné, il est affiché à l'écran sous forme de "tag"
 
+
