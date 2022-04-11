@@ -449,6 +449,8 @@ function searchMainBar() {
                     }
                     if (namerecipe || descriptionrecipe || ingredientrecipe) {
                         filteredGlobal.push(recipes[i]);
+                    } else {
+                        recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
                     }
                 }
 
@@ -467,7 +469,7 @@ function searchMainBar() {
             }
         } else {
 
-            recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
+
             if (searchString.length === 0 && tagArrayselected.length === 0) {
                 updatemedia(recipes);
             }
