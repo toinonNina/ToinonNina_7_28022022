@@ -364,7 +364,6 @@ function RemoveClassActive(button) {
 
 }
 
-
 //search function in the list of filters
 
 
@@ -423,7 +422,6 @@ function searchUstensils() {
 
 //main search function, with or without tag;
 function searchMainBar() {
-
     mainSearchinput.addEventListener('keyup', (e) => {
         let filteredGlobal = [];
         const searchString = uniformString(e.target.value.toLowerCase());
@@ -437,6 +435,8 @@ function searchMainBar() {
             }
             if (tagArrayselected.length === 0) {
                 console.time();
+
+
 
                 filteredGlobal = recipes.filter((recipe) => {
                     return (uniformString(recipe.name).toLowerCase().includes(searchString) || uniformString(recipe.description).toLowerCase().includes(searchString) ||
@@ -452,8 +452,6 @@ function searchMainBar() {
                 recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
             }
         } else {
-
-            recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
             if (searchString.length === 0 && tagArrayselected.length === 0) {
                 updatemedia(recipes);
             }
@@ -462,7 +460,6 @@ function searchMainBar() {
 
     });
 }
-
 
 //font normalization function
 function uniformString(string) {
@@ -480,15 +477,7 @@ function uniformString(string) {
 }
 
 
-
-
-
-
-
-
 async function init() {
-
-
     displayRecipes(recipes);
     displayAppareils(recipes);
     displayUstensils(recipes);
