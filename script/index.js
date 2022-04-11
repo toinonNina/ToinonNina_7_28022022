@@ -447,6 +447,8 @@ function searchMainBar() {
 
                 console.log(filteredGlobal);
                 updatemedia(filteredGlobal);
+            } else {
+                recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
             }
             if (filteredGlobal.length === 0) {
                 recipesSection.innerHTML = `Aucune recette ne correspond à votre critère... Vous pouvez chercher  « tarte aux pommes », « poisson », etc.`;
